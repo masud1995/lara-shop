@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class VendorController extends Controller
 {
@@ -13,7 +14,7 @@ class VendorController extends Controller
      */
     public function index()
     {
-        return view ('back-end.vendor.add');
+        return view ('back-end.vendor.view');
     }
 
     /**
@@ -23,7 +24,9 @@ class VendorController extends Controller
      */
     public function create()
     {
-       
+        
+        return view ('back-end.vendor.add');
+      
     }
 
     /**

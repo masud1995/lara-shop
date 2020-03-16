@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class VendorController extends Controller
+class SellerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class VendorController extends Controller
      */
     public function index()
     {
-        return view ('back-end.vendor.add');
+        //
     }
 
     /**
@@ -23,7 +23,7 @@ class VendorController extends Controller
      */
     public function create()
     {
-       
+        //
     }
 
     /**
