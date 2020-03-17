@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
+use App\User;
 class VendorController extends Controller
 {
     /**
@@ -14,6 +14,20 @@ class VendorController extends Controller
      */
     public function index()
     {
+
+        if(request()->ajax()){
+            return datatables()->of(User::latest()->get())
+            ->addColumn('action',function($data){
+              $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
+              $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
+              return $button;
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+          }
+
+
         return view ('back-end.vendor.view');
     }
 
@@ -37,7 +51,50 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+
+        $this->validate($request,[
+
+            'name' => 'required|min:5|max:255',
+            'email' => 'unique:users|email|max:255|',
+            'img' => 'required|mimes:jpeg,jpg,png',
+            'phone' => 'unique:users|required|max:15',
+            'password' => 'required|min:6|max:50',
+            'address' => 'required|max:500',
+        ]);
+
+
+        //print_r($request->all());
+
+
+
+        $folder = "back-end/vendors/profile/";
+
+        if($image = $request->file('img')){
+          $ext = $image->extension();
+          $image_name = "Vendors".rand(100,999).".".$ext;
+          $image_url = $folder.$image_name;
+          $image->move($folder,$image_name);
+        }
+
+        $data = new User();
+
+        $data->name=request('name');
+        $data->email=request('email');
+        $data->img=$image_url;
+        $data->password=bcrypt($request->password);
+        $data->phone=request('phone');
+        $data->address=request('address');
+        $data->save();
+
+        return back()->with('status', 'Success!! New Seller added successfully.');
+        
+
+
+
+
+
     }
 
     /**
@@ -59,7 +116,7 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        //
+        echo $id;
     }
 
     /**
@@ -82,6 +139,21 @@ class VendorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::check()){
+        
+            $user = User::find($id);
+        
+            $img = $user->img;
+        
+            if($img){
+        
+                unlink($img);
+        
+            }
+        
+            $user->delete();
+            
+        return back()->with('status', 'Success!! vendor deleted successfully.');
+          }
     }
 }

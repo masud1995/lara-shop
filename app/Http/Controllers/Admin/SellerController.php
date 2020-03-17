@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Seller;
@@ -20,18 +20,69 @@ class SellerController extends Controller
         //return view ('back-end.seller.view');
 
         //$clients=Client::join('done', 'done.id', '=', 'work.work_done')
-        $Seller=DB::table('sellers')
-        ->Leftjoin('products', 'sellers.id', '=', 'products.seller_id')
-        ->select('sellers.name','products.title','sellers.phone')
-       ->get();
-     return response($Seller);
 
 
+    // $sellers=DB::table('sellers')
+    //     ->Leftjoin('products', 'sellers.id', '=', 'products.seller_id')
+    //     ->select('sellers.name','products.title','sellers.phone')
+    //    ->get();
+
+
+       if(request()->ajax()){
+        return datatables()->of(Seller::latest()->get())
+        ->addColumn('action',function($data){
+          $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
+          $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
+          return $button;
+        })
+        ->rawColumns(['action'])
+        ->addIndexColumn()
+        ->make(true);
+      }
+     
+     
+     //return response($seller);->with(compact('sellers'))
+
+        return view('back-end.seller.view');
 
 
 
 
     }
+
+
+    public function query(){
+        $users = Seller::query()
+                ->select([
+                 
+                    'sellers.name as name',
+                    'products.title as title',
+                    'sellers.phone as phone',
+                ])
+                ->leftJoin('products', 'products.title', '=', 'sellers.phone');
+    
+        return $users;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -146,7 +197,7 @@ class SellerController extends Controller
             }
             $pre->delete();
     
-            return back()->with('msg-success', 'Success!! Image deleted successfully.');
+            return back()->with('status', 'Success!! Seller Deleted Successfully.');
 
 
 }

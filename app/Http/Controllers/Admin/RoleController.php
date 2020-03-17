@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\vendor;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
-class VendorController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,15 @@ class VendorController extends Controller
      */
     public function index()
     {
-       return view('back-end.vendor.index');
+        if (Auth::check() && Auth::user()->role->id == 1)
+    {
+       return redirect('/admin');
+
+    } else {
+
+        return redirect('/vendor/dashboard');
+    }
+    
     }
 
     /**
@@ -24,10 +33,8 @@ class VendorController extends Controller
      */
     public function create()
     {
-       
+        //
     }
-
-    
 
     /**
      * Store a newly created resource in storage.
@@ -82,6 +89,6 @@ class VendorController extends Controller
      */
     public function destroy($id)
     {
-        echo $id;
+        //
     }
 }

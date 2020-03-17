@@ -108,7 +108,7 @@
         <li class="nav-item">
           <a href="{{route('seller.view')}}" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-            <p>View Products</p>
+            <p>View Seller</p>
           </a>
         </li>
       </ul>

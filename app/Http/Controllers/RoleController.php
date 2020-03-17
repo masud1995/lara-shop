@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\vendor;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class VendorController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class VendorController extends Controller
      */
     public function index()
     {
-       return view('back-end.vendor.index');
+        //
     }
 
     /**
@@ -24,10 +23,8 @@ class VendorController extends Controller
      */
     public function create()
     {
-       
+        //
     }
-
-    
 
     /**
      * Store a newly created resource in storage.
@@ -82,6 +79,6 @@ class VendorController extends Controller
      */
     public function destroy($id)
     {
-        echo $id;
+        //
     }
 }

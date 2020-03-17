@@ -206,11 +206,11 @@ New Product
 @endsection
 
 @section('script')
-  @foreach(['success','error'] as $type)
-      @if(Session::has('msg-'.$type))
-        toastr.{{ $type }}('{{ Session::get('msg-'.$type) }}');
-      @endif
-  @endforeach
+@if(Session::has("status"))
+    
+toastr.success("{{ Session::get('status')}}");
+
+@endif
 
   $(document).ready(function() {
     $(function () {
@@ -225,46 +225,14 @@ New Product
       @endif
     });
 
-    $(".ctgs").change(function(){
-        var selected = 0;
-        $(".ctgs").each(function(){
-            if($(this).is(':checked')){
-                selected = 1;
-            }
-
-        });
-
-        if(selected == 1){
-            $(".ctgs").each(function(){
-                $(this).prop("required",false);
-            });
-        } else {
-            $(".ctgs").each(function(){
-                $(this).prop("required",true);
-            });
-        }
-
-    });
+    
 
     $("#r1").click(function(){
         $('#img1').attr('src', '{{ asset('/') }}image/product_img.png').width(185).height(185);
         $("#valueImg1").val("");
     });
 
-    $("#r2").click(function(){
-        $('#img2').attr('src', '{{ asset('/') }}image/product_img.png').width(185).height(185);
-        $("#valueImg2").val("");
-    });
-
-    $("#r3").click(function(){
-        $('#img3').attr('src', '{{ asset('/') }}image/product_img.png').width(185).height(185);
-        $("#valueImg3").val("");
-    });
-
-    $("#r4").click(function(){
-        $('#img4').attr('src', '{{ asset('/') }}image/product_img.png').width(185).height(185);
-        $("#valueImg4").val("");
-    });
+    
   });
 
   function readURL1(input) {
@@ -280,42 +248,7 @@ New Product
       }
   }
 
-  function readURL2(input) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-
-          reader.onload = function (e) {
-              $('#img2')
-                  .attr('src', e.target.result).width(185).height(185);
-          };
-
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
-  function readURL3(input) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-
-          reader.onload = function (e) {
-              $('#img3')
-                  .attr('src', e.target.result).width(185).height(185);
-          };
-
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
-  function readURL4(input) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-
-          reader.onload = function (e) {
-              $('#img4')
-                  .attr('src', e.target.result).width(185).height(185);
-          };
-
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
+ 
 
 @endsection
 
