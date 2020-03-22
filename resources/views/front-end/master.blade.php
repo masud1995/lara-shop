@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title></title>
+        <title>@yield('title')</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -36,7 +36,7 @@
         <script src="{{ asset('/') }}front_asset/jquery.min.js"></script>
         <script src="{{ asset('/') }}front_asset/jquery.etalage.min.js"></script>
            <!-- <link rel="shortcut icon"  href="front_asset/icon.png"/> -->
-       
+        {!! $basic->header_code !!}
         <script>
             jQuery(document).ready(function ($) {
 
@@ -159,7 +159,7 @@
     <script>
       @yield('script')
     </script>
- 
+    {!! $basic->footer_code !!}
 </body>
 
 

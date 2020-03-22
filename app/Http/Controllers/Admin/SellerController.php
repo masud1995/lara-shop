@@ -118,6 +118,9 @@ class SellerController extends Controller
 
         //print_r($request->all());
 
+        $user = Auth::user();
+        $createdBY=$user->name;
+        $isActive=1;
 
 
         $folder = "back-end/seller/";
@@ -139,6 +142,8 @@ class SellerController extends Controller
         $data->bkash=request('bkash');
         $data->address=request('address');
         $data->description=request('description');
+        $data->createdBy=$createdBY;
+        $data->isActive=$isActive;
 
         $data->save();
 

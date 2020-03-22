@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use App\User;
+
+
 //include ('../app/logic.php');
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ use App\User;
 //     'middleware' => 'auth','admin',
 
 // ],function () {
-Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function (){
+Route::group(['prefix'=>'admin','namespace' => 'Admin','middleware'=>['auth','admin']], function (){
     //sellerRoutes
     Route::get('/seller/delete/{id}','SellerController@destroy')->name('seller.destroy');
     Route::post('/seller/store','SellerController@store')->name('seller.store');
@@ -46,7 +48,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function (){
 
 
 
-
+// Route::get('/admin/sellers',function(){
+//     return "Hello";
+// });
 
 
 
@@ -56,10 +60,16 @@ Route::group([
     'middleware' => 'vendor','auth',
 ],function () {
     Route::get('dashboard','VendorController@index')->name('vendor.dashboard');
+    Route::get('/seller/add','VendorController@addSeller')->name('vendor.seller.add');
+    Route::get('/seller/view','VendorController@viewSeller')->name('vendor.seller.view');
+    Route::post('/seller/store','VendorController@storeSeller')->name('vendor.seller.store');
 
 });
 
 
+
+//Search
+Route::post('/search','Frontend\SearchController@index');
 
 //$logic
 

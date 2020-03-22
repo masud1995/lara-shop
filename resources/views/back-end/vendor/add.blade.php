@@ -1,4 +1,4 @@
-@extends('back-end.admin')
+@extends('back-end.vendor.layout.master')
 
 @section('title')
 Add Vendor
@@ -135,13 +135,13 @@ Add Vendor
 
                         <label for="usr">Upload Image:</label>
                     <div class="form-group row">
-                      <div class="col-md-3" style="padding:0;">
+                      <div class="col-md-3" style="padding:20px;">
                           <div class="border imgDiv">
                                   <img src="{{ asset('/') }}image/product_img.png" id="img1" class="images">
                                   <input type="file" name="img" id="valueImg1" value="product_img.png" class="upload" onchange="readURL1(this);">
                           </div>
-                          <input type="button" style="float:left;margin-left:5px;width: 140px;" class="btn btn-sm btn-info" value="Add">
-                          <input type="button" style="float:left;margin-left:15px;padding: 4px 13px;" class="btn btn-sm btn-warning" value="x" id="r1">
+                          <input type="button" style="float:left;margin-left:0px;width: 195px; " class="btn btn-sm btn-info" value="Add">
+                          <input type="button" style="float:left;margin-left:80px;padding: 4px 13px;" class="btn btn-sm btn-warning" value="x" id="r1">
                           @error('img')
                               <span style="color:red;color:red;display:block;clear: both;" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -151,8 +151,9 @@ Add Vendor
                       
 
                     </div>
+                  </div>
 
-
+                </div>
 
 
 

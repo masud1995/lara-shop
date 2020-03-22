@@ -23,6 +23,8 @@ class CreateSellersTable extends Migration
             $table->string('bkash');
             $table->string('address');
             $table->string('description');
+            $table->string('isActive')->default(1);
+            $table->string('createdBy');
 
             $table->timestamps();
         });

@@ -24,12 +24,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    // public function boot()
-    // {
-    //     Schema::defaultStringLength(191);
-    //     View::composer('*',function($view){
-    //       $basic = Basic::find(1);
-    //       $view->with('basic',$basic);
-    //     });
-    // }
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+        View::composer('*',function($view){
+          $basic = Basic::find(1);
+          $view->with('basic',$basic);
+        });
+    }
 }

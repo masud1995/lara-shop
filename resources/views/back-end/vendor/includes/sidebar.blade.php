@@ -43,13 +43,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-          <a href="{{route('seller.add')}}" class="nav-link">
+          <a href="{{route('vendor.seller.add')}}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Add New</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('seller.view')}}" class="nav-link">
+            <a href="{{route('vendor.seller.view')}}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>View Seller</p>
             </a>
@@ -59,29 +59,7 @@
      
       
       
-      <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
-          <p>
-            Settings
-            <i class="right fas fa-angle-left"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{ url('vendor/info') }}" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Basic info</p>
-            </a>
-          
-          <li class="nav-item">
-            <a href="{{ url('vendor/change/password') }}" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Change Password</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}"
            onclick="event.preventDefault();

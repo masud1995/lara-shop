@@ -1,7 +1,6 @@
-@extends('back-end.admin')
-
+@extends('back-end.vendor.layout.master')
 @section('title')
-New Product
+Add Seller
 @endsection
 
 @section('style')
@@ -41,7 +40,7 @@ New Product
 <section class="content">
   <div class="container-fluid">
   <!-- form start -->
-  <form class="form-horizontal" method="POST" action="{{url('admin/seller/store')}}" accept-charset="utf-8" enctype="multipart/form-data">
+  <form class="form-horizontal" method="POST" action="{{url('vendor/seller/store')}}" accept-charset="utf-8" enctype="multipart/form-data">
     @csrf
       <div class="row">
         <div class="col-md-9">

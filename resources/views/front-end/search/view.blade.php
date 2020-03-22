@@ -1,3 +1,15 @@
+@extends('front-end.master')
+
+@section('title')
+Order Confirmation
+@endsection
+
+@section('content')
+
+
+
+
+
 
 <div class="container" style="padding-right:0px">
     <div class="row">
@@ -46,3 +58,17 @@
     </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+@endsection
