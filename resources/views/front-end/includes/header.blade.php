@@ -51,7 +51,7 @@
 
                             <li   class="top-menu-padding" style="padding-top: 20px;">
                                 <a style="background:darkgreen;color: #fff;font-weight: bold;padding-left: 10px;padding-right: 10px;border-radius: 6px;" href="tel:01714695105" title="Call" class="font-color1">
-                                    <i class="fa fa-phone-square"> </i>  {{$basic->phone}}
+                                    <i class="fa fa-phone-square"> </i> 
                                 </a>
                             </li>
                         </ul>
