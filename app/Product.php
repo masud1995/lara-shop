@@ -23,4 +23,11 @@ class Product extends Model
       'status',
       'sts'
     ];
+
+
+    public function seller()
+    {
+        return $this->belongsTo('App\Seller');
+    }
+    
 }

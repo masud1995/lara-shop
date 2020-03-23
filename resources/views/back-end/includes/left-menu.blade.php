@@ -94,6 +94,52 @@
       <a href="#" class="nav-link">
         <i class="nav-icon fas fa-th"></i>
         <p>
+         Seller
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+        <a href="{{route('seller.add')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Add New</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('seller.view')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>View Seller</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item has-treeview">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>
+         Vendor
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+        <a href="{{route('vendor.add')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Add New</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('vendor.view')}}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>View Vendor</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item has-treeview">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-th"></i>
+        <p>
           Pages
           <i class="right fas fa-angle-left"></i>
         </p>

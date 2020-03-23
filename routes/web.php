@@ -12,7 +12,7 @@
 */
 
 Auth::routes([
-  'register' => false, // Registration Routes...
+  //'register' => false, // Registration Routes...
   'reset' => false, // Password Reset Routes...
   'verify' => false, // Email Verification Routes...
 ]);
@@ -44,7 +44,7 @@ Route::get('/page/{slug}', 'FrontPagesController@index');
 
 Route::get('/admin/login', 'AdminLoginController@adminlogin')->name('admin.login');
 // admin Routes
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
   Route::get('/admin', 'BackHomeController@index')->name('admin');
 
   Route::get('/admin/categories', 'BackCategoriesController@index');

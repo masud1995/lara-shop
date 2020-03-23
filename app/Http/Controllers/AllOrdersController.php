@@ -134,12 +134,12 @@ class AllOrdersController extends Controller
         $order = $update_order;
 
         $admin = Notifysetting::latest()->first();
-        if($admin->notify_admin == 1 && $admin->admin_mail != null){
-          Notification::route('mail',$admin->admin_mail)->notify(new  NewOrderAdmin($order));
-        }
-        if($admin->notify_customer == 1 && $request->customer_email != null){
-          Notification::route('mail',$request->customer_email)->notify(new  NewOrderCustomer($order));
-        }
+        // if($admin->notify_admin == 1 && $admin->admin_mail != null){
+        //   Notification::route('mail',$admin->admin_mail)->notify(new  NewOrderAdmin($order));
+        // }
+        // if($admin->notify_customer == 1 && $request->customer_email != null){
+        //   Notification::route('mail',$request->customer_email)->notify(new  NewOrderCustomer($order));
+        // }
 
         return redirect()->route('confirm',$order_id)->with('msg','Thank you! Your order has been received.');
     }

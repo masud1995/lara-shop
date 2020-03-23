@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('pcode')->nullable();
             $table->string('title');
             $table->string('slug');
+            $table->integer('seller_id')->nullable();
             $table->text('phone')->nullable();
             $table->string('bkash')->nullable();
             $table->longText('short_description')->nullable();

@@ -1,12 +1,12 @@
 <section class=" area-mobile-off" style="box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);">
-        <section style="background-color:#F3F3F3">
+        <section style="background-color:#5DA779">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-zero">
                         <ul class="navbar-nav pull-right">
-                            <li class="top-menu-padding"><a href="javascript:void(0)" title="Mobile: {{$basic->contact_no}}" class="font-color1 ">Mobile: {{$basic->contact_no}}</a></li>
+                            <li class="top-menu-padding"><a href="javascript:void(0)" style="color:white;" title="Mobile: {{$basic->contact_no}}" class="font-color1 ">Mobile: {{$basic->contact_no}}</a></li>
 
-                            <li class="top-menu-padding"><a href="javascript:void(0)" title="Marchant Bkash Number : {{$basic->bkas}}" class="font-color1">Marchant Bkash Number : {{$basic->bkas}} </a></li>
+                            <li class="top-menu-padding"><a href="javascript:void(0)" style="color:white;" title="Marchant Bkash Number : {{$basic->bkas}}" class="font-color1">Marchant Bkash Number : {{$basic->bkas}} </a></li>
 
 
                         </ul>
@@ -29,13 +29,15 @@
 
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12" style="">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-radius: 20px 20px 0 0;padding-top: 8px;">
-                            <form action="#" method="post" class="form" role="search">
+                            <form action="/search" method="post" class="form" role="search">
+                                @csrf
                                 <div class="form-group" >
-                                    <div class="input-group"  style="border: 2px solid darkgreen!important; border-radius: 4px;">
-                                        <input type="search" id="searchpro" class="form-control" placeholder="পন্য সার্চ করুন" style="border:0  !important;box-shadow: none !important;padding: 2px 10px;">
+                                    <div class="input-group"   style="border: 2px solid darkgreen!important; border-radius: 4px;">
+                                        <input type="search" name="searchBox" id="searchpro" class="form-control" placeholder="পন্য সার্চ করুন" style="border:0  !important;box-shadow: none !important;padding: 2px 10px;">
 
-                                        <span style="background: darkgreen;
-                                              color: #fff;border: 0;border-radius: 0;font-size: 20px;" class="input-group-addon"> &nbsp;<i class="fa fa-search"></i></span>
+                                     <span style="background: darkgreen;
+                                              color: #fff;border: 0;border-radius: 0;font-size: 20px; cursor: pointer;" class="input-group-addon"> <button type="submit" style="background: darkgreen;
+                                              color: #fff;border: 0;border-radius: 0;font-size: 20px; cursor: pointer;"> &nbsp;<i class="fa fa-search" onclick="location.href='pageurl.html';">Search</i></span></button>
                                     </div>
                                 </div>
                             </form>
@@ -60,7 +62,7 @@
                 </div>
             </div>
         </section>
-        <nav class="navbar navbar-default lightHeader " role="navigation" style="height: auto;top: 0;box-shadow: none;background: #081621">
+        <nav class="navbar navbar-default lightHeader " role="navigation" style="height: auto;top: 0;box-shadow: none;background: #5DA779">
             <div class="container" style="justify-content: center;display: flex;padding-right: 0;">
 
                 <!-- Brand and toggle get grouped for better mobile display -->

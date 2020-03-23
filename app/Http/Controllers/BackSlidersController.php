@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Slider;
-use Auth;
+
 
 class BackSlidersController extends Controller
 {
@@ -121,7 +122,6 @@ class BackSlidersController extends Controller
         if($preimg){
           unlink($preimg);
         }
-
         $pre->delete();
 
         return back()->with('msg-success', 'Success!! Image deleted successfully.');
