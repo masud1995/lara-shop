@@ -116,7 +116,14 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        echo $id;
+        //echo $id;
+        //$vendor = User::findOrFail($id)->get()6 ;->
+                        //->first();
+     $vendor = User::where('id', $id)->first();
+
+     //$vendor = User::foundada($id)->first();
+
+        return view('back-end.vendor.admin.edit',compact('vendor'));
     }
 
     /**
@@ -128,7 +135,44 @@ class VendorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+
+            'name' => 'required|min:5|max:255',
+            'img' => 'required|mimes:jpeg,jpg,png',
+            'password' => 'required|min:6|max:50',
+            'address' => 'required|max:500',
+
+        ]);
+
+
+        //print_r($request->all());
+
+        $folder = "back-end/vendors/profile/";
+
+        if($image = $request->file('img')){
+          $ext = $image->extension();
+          $image_name = "Vendors".rand(100,999).".".$ext;
+          $image_url = $folder.$image_name;
+          $image->move($folder,$image_name);
+        }else{
+
+            $data=User::find($id);
+            $image_url=$data->img;
+            
+        }
+
+        //$data = new User();
+        $data = User::find($id);
+
+        $data->name=request('name');
+        $data->email=request('email');
+        $data->img=$image_url;
+        $data->password=bcrypt($request->password);
+        $data->phone=request('phone');
+        $data->address=request('address');
+        $data->save();
+
+        return back()->with('status', 'Success!! Information Updated Successfully.');
     }
 
     /**

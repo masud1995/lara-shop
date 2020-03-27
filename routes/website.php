@@ -25,6 +25,8 @@ use App\User;
 // ],function () {
 Route::group(['prefix'=>'admin','namespace' => 'Admin','middleware'=>['auth','admin']], function (){
     //sellerRoutes
+    Route::get('/seller/edit/{id}','SellerController@edit')->name('seller.edit');
+    Route::put('/seller/update/{id}','SellerController@update')->name('seller.update');
     Route::get('/seller/delete/{id}','SellerController@destroy')->name('seller.destroy');
     Route::post('/seller/store','SellerController@store')->name('seller.store');
     Route::get('/seller/add','SellerController@create')->name('seller.add');
@@ -32,7 +34,7 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin','middleware'=>['auth','ad
 
 
     //vendorRoutes
-
+    Route::put('/vendor/update/{id}','VendorController@update')->name('vendor.update.admin');
     Route::get('/vendor/delete/{id}','VendorController@destroy')->name('vendor.delete');
     Route::get('/vendor/edit/{id}','VendorController@edit')->name('vendor.edit');
     Route::post('/vendor/store','VendorController@store')->name('vendor.store');

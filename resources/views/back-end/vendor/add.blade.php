@@ -1,4 +1,4 @@
-@extends('back-end.vendor.layout.master')
+@extends('back-end.admin')
 
 @section('title')
 Add Vendor

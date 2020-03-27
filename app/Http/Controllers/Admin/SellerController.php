@@ -171,7 +171,11 @@ class SellerController extends Controller
      */
     public function edit($id)
     {
-        //
+        //$seller=Seller::
+        $seller = Seller::found($id)->first();
+
+        return view('back-end.seller.edit',compact('seller'));
+
     }
 
     /**
@@ -183,7 +187,75 @@ class SellerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $this->validate($request,[
+
+            'name' => 'required|min:5|max:255',
+            'email' => 'nullable|email|max:255|',
+            'img' => 'nullable|mimes:jpeg,jpg,png',
+            'location' => 'required',
+            'phone' => 'required|max:15',
+            'bkash' => 'required|max:15',
+            'address' => 'required|max:500',
+            'description' => 'nullable|max:500',
+        ]);
+
+
+        //print_r($request->all());
+
+        $user = Auth::user();
+        $createdBY=$user->name;
+        $isActive=1;
+
+
+        $folder = "back-end/seller/";
+
+        if($image = $request->file('img')){
+          $ext = $image->extension();
+          $image_name = "Seller".rand(100,999).".".$ext;
+          $image_url = $folder.$image_name;
+          $image->move($folder,$image_name);
+        }else{
+
+            $data=Seller::find($id);
+            $image_url=$data->img;
+
+        }
+
+        $data = Seller::find($id);
+
+        $data->name=request('name');
+        $data->email=request('email');
+        $data->img=$image_url;
+        $data->location=request('location');
+        $data->phone=request('phone');
+        $data->bkash=request('bkash');
+        $data->address=request('address');
+        $data->description=request('description');
+        $data->createdBy=$createdBY;
+        $data->isActive=$isActive;
+
+        $data->save();
+
+        return back()->with('status', 'Success!! Seller Updated Successfully.');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     /**

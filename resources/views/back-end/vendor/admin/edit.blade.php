@@ -1,7 +1,7 @@
 @extends('back-end.admin')
 
 @section('title')
-Add Seller
+Edit Vendor
 @endsection
 
 @section('style')
@@ -41,21 +41,22 @@ Add Seller
 <section class="content">
   <div class="container-fluid">
   <!-- form start -->
-  <form class="form-horizontal" method="POST" action="{{url('admin/seller/store')}}" accept-charset="utf-8" enctype="multipart/form-data">
+  <form class="form-horizontal" method="POST" action="{{url('admin/vendor/update/'.$vendor->id)}}" accept-charset="utf-8" enctype="multipart/form-data">
     @csrf
+     @method('put')
       <div class="row">
         <div class="col-md-9">
 
             <div class="card card-info">
                 <div class="card-header">
-                  <h3 class="card-title">Add Seller</h3>
+                  <h3 class="card-title">Add Vendor</h3>
                 </div>
                 <!-- /.card-header -->
                   <div class="card-body">
                     <div class="form-group row">
-                      <label for="name" class="col-sm-3 control-label">Seller Name <span style="color:red;">*</span></label>
+                      <label for="name" class="col-sm-3 control-label">Vendor Name <span style="color:red;">*</span></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required placeholder="Enter seller name">
+                      <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{$vendor->name}}" required placeholder="Enter vendor name">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -65,10 +66,10 @@ Add Seller
                     </div>
                     
                     <div class="form-group row">
-                      <label for="pcode" class="col-sm-3 control-label">E-mail</label>
+                      <label for="email" class="col-sm-3 control-label">E-mail</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('pcode') is-invalid @enderror" id="number" name="email" value="{{ old('pcode') }}" placeholder="Enter email">
-                        @error('pcode')
+                        <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{$vendor->email}}" placeholder="Enter the email">
+                        @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -78,7 +79,7 @@ Add Seller
                     <div class="form-group row">
                       <label for="phone" class="col-sm-3 control-label">Phone number(s)</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Enter phone number(s) separated by commas(,)">
+                        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{$vendor->phone}}" placeholder="Enter phone number(s) separated by commas(,)">
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -87,10 +88,10 @@ Add Seller
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="bkash" class="col-sm-3 control-label">Bkash Marchent</label>
+                      <label for="password" class="col-sm-3 control-label">Password</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('bkash') is-invalid @enderror" id="bkash" name="bkash" value="{{ old('bkash') }}" placeholder="Enter bkash Marchent number">
-                        @error('bkash')
+                        <input type="text" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="" placeholder="Enter the password">
+                        @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -98,10 +99,10 @@ Add Seller
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="bkash" class="col-sm-3 control-label">Address</label>
+                      <label for="address" class="col-sm-3 control-label">Address</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('bkash') is-invalid @enderror" id="bkash" name="address" value="{{ old('bkash') }}" placeholder="Enter address ">
-                        @error('bkash')
+                        <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{$vendor->address}}" placeholder="Enter address ">
+                        @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -112,14 +113,8 @@ Add Seller
                     
                     <br />
 
-                    <label for="pcode" class="col-sm-3 control-label">Description <span style="color:red;">*</span></label>
-                    <div class="form-group row">
-                      <div class="col-sm-12">
-                          <textarea id="long_description" name="description" placeholder="Place some text here" style="width: 100%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;"></textarea>
-                      </div>
-                    </div>
-                    <textarea id="des" style="display:none;">{{ old('description') }}</textarea>
-
+                    
+                    
                   </div>
                   <!-- /.card-body -->
             </div>
@@ -130,22 +125,23 @@ Add Seller
               <!-- /.card -->
               <div class="card card-warning">
                 <div class="card-header">
-                  <h3 class="card-title">Location</h3>
+                  <h3 class="card-title">Upload Image</h3>
                 </div>
                   <!-- /.card-header -->
                   <div class="card-body">
                       <div class="form-group">
 
 
+                        <p></p>
 
-
-                        <label for="usr">Upload Images:</label>
+                        <label for="usr">Upload Image:</label>
                     <div class="form-group row">
-                      <div class="col-md-4" style="padding:20px;">
+                      <div class="col-md-3" style="padding:20px;">
                           <div class="border imgDiv">
-                                  <img src="{{ asset('/') }}image/product_img.png" id="img1" class="images">
+                                  <img src="{{ asset('/'.$vendor->img) }}" id="img1" class="images">
                                   <input type="file" name="img" id="valueImg1" value="product_img.png" class="upload" onchange="readURL1(this);">
                           </div>
+  
                           <input type="button" style="float:left;margin-left:0px;width: 195px; " class="btn btn-sm btn-info" value="Add">
                           <input type="button" style="float:left;margin-left:80px;padding: 4px 13px;" class="btn btn-sm btn-warning" value="x" id="r1">
                           @error('img')
@@ -157,30 +153,23 @@ Add Seller
                       
 
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <label for="rprice">Division/District/State</label>
-                        <input list="encodings" value="" name="location" class="form-control">
-                        <datalist id="encodings">
-                            <option value="Jamalpur">Jamalpur</option>
-                            <option value="Dhaka">Dhaka</option>
-                            <option value="Sylhet">Sylhet</option>
-                        </datalist>
-                      </div>
                   </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
                   <!-- /.card-body -->
               </div>
              
@@ -206,26 +195,13 @@ Add Seller
 @endsection
 
 @section('script')
-@if(Session::has("status"))
+
+    @if(Session::has("status"))
     
-toastr.success("{{ Session::get('status')}}");
+        toastr.success("{{ Session::get('status')}}");
 
-@endif
+    @endif
 
-  $(document).ready(function() {
-    $(function () {
-      // Summernote
-      var des = $("#des").val();
-      $('#long_description').summernote({
-        height: 500
-      });
-
-      @if(old('description'))
-        $('#long_description').summernote('code', des);
-      @endif
-    });
-
-    
 
     $("#r1").click(function(){
         $('#img1').attr('src', '{{ asset('/') }}image/product_img.png').width(185).height(185);
@@ -233,7 +209,6 @@ toastr.success("{{ Session::get('status')}}");
     });
 
     
-  });
 
   function readURL1(input) {
       if (input.files && input.files[0]) {
@@ -248,9 +223,8 @@ toastr.success("{{ Session::get('status')}}");
       }
   }
 
- 
-
 @endsection
+
 
 
 

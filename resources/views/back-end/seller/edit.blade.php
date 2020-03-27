@@ -1,7 +1,7 @@
 @extends('back-end.admin')
 
 @section('title')
-Add Seller
+Edit Seller
 @endsection
 
 @section('style')
@@ -41,21 +41,22 @@ Add Seller
 <section class="content">
   <div class="container-fluid">
   <!-- form start -->
-  <form class="form-horizontal" method="POST" action="{{url('admin/seller/store')}}" accept-charset="utf-8" enctype="multipart/form-data">
+  <form class="form-horizontal" method="POST" action="{{url('admin/seller/update/'.$seller->id)}}" accept-charset="utf-8" enctype="multipart/form-data">
     @csrf
+     @method('put')
       <div class="row">
         <div class="col-md-9">
 
             <div class="card card-info">
                 <div class="card-header">
-                  <h3 class="card-title">Add Seller</h3>
+                  <h3 class="card-title">Edit Seller</h3>
                 </div>
                 <!-- /.card-header -->
                   <div class="card-body">
                     <div class="form-group row">
                       <label for="name" class="col-sm-3 control-label">Seller Name <span style="color:red;">*</span></label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required placeholder="Enter seller name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $seller->name }}" required placeholder="Enter seller name">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -67,7 +68,7 @@ Add Seller
                     <div class="form-group row">
                       <label for="pcode" class="col-sm-3 control-label">E-mail</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('pcode') is-invalid @enderror" id="number" name="email" value="{{ old('pcode') }}" placeholder="Enter email">
+                        <input type="text" class="form-control @error('pcode') is-invalid @enderror" id="number" name="email" value="{{ $seller->email }}" placeholder="Enter email">
                         @error('pcode')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -78,7 +79,7 @@ Add Seller
                     <div class="form-group row">
                       <label for="phone" class="col-sm-3 control-label">Phone number(s)</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Enter phone number(s) separated by commas(,)">
+                        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ $seller->phone }}" placeholder="Enter phone number(s) separated by commas(,)">
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -89,7 +90,7 @@ Add Seller
                     <div class="form-group row">
                       <label for="bkash" class="col-sm-3 control-label">Bkash Marchent</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('bkash') is-invalid @enderror" id="bkash" name="bkash" value="{{ old('bkash') }}" placeholder="Enter bkash Marchent number">
+                        <input type="text" class="form-control @error('bkash') is-invalid @enderror" id="bkash" name="bkash" value="{{ $seller->bkash }}" placeholder="Enter bkash Marchent number">
                         @error('bkash')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -100,7 +101,7 @@ Add Seller
                     <div class="form-group row">
                       <label for="bkash" class="col-sm-3 control-label">Address</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('bkash') is-invalid @enderror" id="bkash" name="address" value="{{ old('bkash') }}" placeholder="Enter address ">
+                        <input type="text" class="form-control @error('bkash') is-invalid @enderror" id="address" name="address" value="{{ $seller->address }}" placeholder="Enter address ">
                         @error('bkash')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -115,7 +116,7 @@ Add Seller
                     <label for="pcode" class="col-sm-3 control-label">Description <span style="color:red;">*</span></label>
                     <div class="form-group row">
                       <div class="col-sm-12">
-                          <textarea id="long_description" name="description" placeholder="Place some text here" style="width: 100%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;"></textarea>
+                          <textarea id="long_description" name="description" placeholder="Place some text here" style="width: 100%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;">{!!$seller->description!!}</textarea>
                       </div>
                     </div>
                     <textarea id="des" style="display:none;">{{ old('description') }}</textarea>
@@ -143,7 +144,7 @@ Add Seller
                     <div class="form-group row">
                       <div class="col-md-4" style="padding:20px;">
                           <div class="border imgDiv">
-                                  <img src="{{ asset('/') }}image/product_img.png" id="img1" class="images">
+                                  <img src="{{ asset('/').$seller->img }}" id="img1" class="images">
                                   <input type="file" name="img" id="valueImg1" value="product_img.png" class="upload" onchange="readURL1(this);">
                           </div>
                           <input type="button" style="float:left;margin-left:0px;width: 195px; " class="btn btn-sm btn-info" value="Add">
@@ -157,21 +158,6 @@ Add Seller
                       
 
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <label for="rprice">Division/District/State</label>
                         <input list="encodings" value="" name="location" class="form-control">
                         <datalist id="encodings">
