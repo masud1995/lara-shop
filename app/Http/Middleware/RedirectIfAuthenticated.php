@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Helpers\AppHelper;
 
 class RedirectIfAuthenticated
 {
@@ -25,4 +26,19 @@ class RedirectIfAuthenticated
 
      
     }
+
+
+
+
+
+    // if (Auth::guard($guard)->check()) {
+    //     if (Auth::viaRemember()) {
+    //         session(['user_session_sha1' => AppHelper::getUserSessionHash()]);
+    //         session(['user_role_id' => auth()->user()->role->role_id]);
+    //     }
+    //    return redirect('/verify/user/dashboard');
+    // }
+
+    // return $next($request);
+
 }

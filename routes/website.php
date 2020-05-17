@@ -3,6 +3,9 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 
 
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+
 //include ('../app/logic.php');
 /*
 |--------------------------------------------------------------------------
@@ -61,10 +64,18 @@ Route::group([
     'prefix' => 'vendor',
     'middleware' => 'vendor','auth',
 ],function () {
+    
+    //Seller
     Route::get('dashboard','VendorController@index')->name('vendor.dashboard');
     Route::get('/seller/add','VendorController@addSeller')->name('vendor.seller.add');
     Route::get('/seller/view','VendorController@viewSeller')->name('vendor.seller.view');
     Route::post('/seller/store','VendorController@storeSeller')->name('vendor.seller.store');
+
+    //Products
+    Route::get('/product/add','VendorController@addProduct')->name('vendor.products.add');
+    Route::get('/products/view','VendorController@viewProduct')->name('vendor.products.view');
+    Route::post('/product/store','VendorController@storeProduct')->name('vendor.products.store');
+    
 
 });
 
@@ -93,3 +104,9 @@ Route::post('/search','Frontend\SearchController@index');
 
 //secure the redirect
 Route::get('/verify/user/dashboard','Admin\RoleController@index');
+
+Route::get('/demoInfo','Admin\RoleController@create');
+
+
+
+

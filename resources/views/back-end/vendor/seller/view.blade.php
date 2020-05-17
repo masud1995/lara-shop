@@ -27,13 +27,16 @@ view Sellers
                       <thead>
                         <tr>
                           <th>SL#</th>
+                          <th>Seller ID</th>
+                          <th>Image</th>
                           <th>Name</th>
                           <th>E-mail</th>
                           <th>Adress</th>
                           <th>Phone</th>
-                          <th>Image</th>
+                          
+                          <th>Product Code</th>
                       
-                          <th style="width:150px;">Action</th>
+                         
                         </tr>
                       </thead>
                       
@@ -79,12 +82,25 @@ $(document).ready(function(){
       processing: true,
       serverSide: true,
       ajax:{
-        url: "{{ url('/admin/sellers') }}",
+        url: "{{ url('/vendor/seller/view') }}",
       },
       columns:[
         {
           data: 'DT_RowIndex',
           name: 'DT_RowIndex'
+        },
+        
+        {
+          data: 'id',
+          name: 'id'
+        },
+        {
+          data: 'img',
+          name: 'img',
+          render: function(data,type,full,meta){
+              return "<img src={{ URL::to('/') }}/"+data+" width='70' />";
+            },
+            orderable: false
         },
         
         {
@@ -104,20 +120,13 @@ $(document).ready(function(){
             data: 'phone',
             name: 'phone'
           },
-          {
-            data: 'img',
-            name: 'img',
-            render: function(data,type,full,meta){
-                return "<img src={{ URL::to('/') }}/"+data+" width='70' />";
-              },
-              orderable: false
-          },
           
-        {
-          data: 'action',
-          name: 'action',
-          orderable: false
-        }
+          {
+            data: 'pcode',
+            name: 'pcode'
+          }
+          
+        
       ]
     });
     $('#vendors tbody').on( 'click', '.edit', function () {

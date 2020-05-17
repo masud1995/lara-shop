@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use DB;
 use App\Basic;
 use View;
 
@@ -31,5 +34,30 @@ class AppServiceProvider extends ServiceProvider
           $basic = Basic::find(1);
           $view->with('basic',$basic);
         });
+
+
+    //  Event::listen('illuminate.query', function($query)
+    //     {
+    //         //var_dump($query);
+    //         Log::info($query);
+            
+    //     });
+
+    //     Log::warn("Test Log");
+    // }
+
+
+    
+
+
+    DB::listen(function ($query) {
+        if (preg_match('/^select/', $query->sql)) {
+            Log::info('sql: ' .  $query->sql);
+            // Also available are $query->bindings and $query->time.
+        }
+    });
+
+
+
     }
 }

@@ -17,10 +17,23 @@ class BackProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    protected function __getData()
+    {
+
+      $data = Product::leftjoin('sellers', 'sellers.id', '=', 'products.seller_id')
+        ->select('products.*', 'sellers.name')
+        ->orderBy('id')
+        ->get();
+      return $data;
+    }
+
     public function index()
     {
+      
         if(request()->ajax()){
-          return datatables()->of(Product::latest()->get())
+          return datatables()->of($this->__getData())
           ->addColumn('action',function($data){
             $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
             $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">Delete</button>';
@@ -116,6 +129,7 @@ class BackProductsController extends Controller
           $product = new Product();
 
           $product->title = $request->name;
+          $product->seller_id = $request->seller_id;
           $product->pcode = $request->pcode;
           $product->slug = $title_slug;
           $product->phone = $request->phone;

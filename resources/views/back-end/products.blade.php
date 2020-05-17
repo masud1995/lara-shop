@@ -24,6 +24,7 @@ Products
                         <th>SL#</th>
                         <th>Image</th>
                         <th>Title</th>
+                        <th>Seller Name</th>
                         <th>Item Code</th>
                         <th>Reqular Price</th>
                         <th>Standard Price</th>
@@ -31,18 +32,7 @@ Products
                         <th style="width:150px;">Action</th>
                       </tr>
                     </thead>
-                    <tfoot>
-                      <tr>
-                        <th>SL#</th>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Item Code</th>
-                        <th>Reqular Price</th>
-                        <th>Standard Price</th>
-                        <th>Publish Date</th>
-                        <th style="width:150px;">Action</th>
-                      </tr>
-                    </tfoot>
+                   
                   </table>
                 </div>
               </div>
@@ -113,6 +103,10 @@ $(document).ready(function(){
         {
           data: 'title',
           name: 'title'
+        },
+        {
+          data: 'name',
+          name: 'name'
         },
         {
           data: 'pcode',

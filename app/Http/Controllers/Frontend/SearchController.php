@@ -15,21 +15,14 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword=$request->searchBox;
+        $keyword = $request->searchBox;
 
-
-        if($keyword == "null"){
-            $products = Product::orderBy('id','DESC')->take(30)->get();
-          } else {
-            $products = Product::where('title','LIKE',"%{$keyword}%")->orderBy('id','DESC')->get();
-          }
-
-         // print_r($products);
-         // print_r($request->all());
-
-         return view('front-end.search.view')->with(compact('products'));
-
-
+        if ($keyword == "null") {
+            $products = Product::orderBy('id', 'DESC')->take(30)->get();
+        } else {
+            $products = Product::where('title', 'LIKE', "%{$keyword}%")->orderBy('id', 'DESC')->get();
+        }
+        return view('front-end.search.view')->with(compact('products'));
     }
 
     /**

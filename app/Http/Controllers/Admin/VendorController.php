@@ -16,7 +16,7 @@ class VendorController extends Controller
     {
 
         if(request()->ajax()){
-            return datatables()->of(User::latest()->get())
+            return datatables()->of(User::where('Name','!=','Admin')->get())
             ->addColumn('action',function($data){
               $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
               $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
@@ -197,7 +197,7 @@ class VendorController extends Controller
         
             $user->delete();
             
-        return back()->with('status', 'Success!! vendor deleted successfully.');
+        return back()->with('status', 'Success!!! Vendor Deleted Successfully.');
           }
     }
 }

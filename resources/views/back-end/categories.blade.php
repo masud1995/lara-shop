@@ -131,7 +131,7 @@ Categories
                         <td>
                           <div class="col-md-12">
                             <button type="button" class="editmctg btn btn-success btn-xs" data-toggle="modal" data-target="#editModal">Edit</button>
-                            <button type="button" class="dmctg btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            <button type="button" onclick="/sub-category/delete/" class="dmctg btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">Delete</button>
                           </div>
                         </td>
                       </tr>

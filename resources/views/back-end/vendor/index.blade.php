@@ -16,7 +16,7 @@ Deshboard
 
           <div class="info-box-content">
             <span class="info-box-text">Total Products</span>
-            <span class="info-box-number">
+            <span class="info-box-number">{{ $totalproduct }}
              
             </span>
           </div>
@@ -31,7 +31,7 @@ Deshboard
 
           <div class="info-box-content">
             <span class="info-box-text">Total Customers</span>
-            <span class="info-box-number"></span>
+            <span class="info-box-number">{{ $totalcustomer }}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -48,7 +48,7 @@ Deshboard
 
           <div class="info-box-content">
             <span class="info-box-text">Total Categories</span>
-            <span class="info-box-number"></span>
+            <span class="info-box-number">{{$totalctg}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -61,7 +61,7 @@ Deshboard
 
           <div class="info-box-content">
             <span class="info-box-text">Total Sales</span>
-            <span class="info-box-number">৳ </span>
+            <span class="info-box-number">৳ {{$totalsales}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -80,7 +80,7 @@ Deshboard
           <div class="info-box-content">
             <span class="info-box-text">Total Orders</span>
             <span class="info-box-number">
-             
+              {{$totalorder}}
             </span>
           </div>
           <!-- /.info-box-content -->
@@ -94,7 +94,7 @@ Deshboard
 
           <div class="info-box-content">
             <span class="info-box-text">Pending Orders</span>
-            <span class="info-box-number"></span>
+            <span class="info-box-number">{{$pendingorders}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -108,7 +108,7 @@ Deshboard
 
           <div class="info-box-content">
             <span class="info-box-text">Processing Orders</span>
-            <span class="info-box-number"></span>
+            <span class="info-box-number">{{$processingorders}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -125,7 +125,7 @@ Deshboard
 
           <div class="info-box-content">
             <span class="info-box-text">Delivered Orders</span>
-            <span class="info-box-number"></span>
+            <span class="info-box-number">{{$deliveredorders}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -138,7 +138,7 @@ Deshboard
 
           <div class="info-box-content">
             <span class="info-box-text">Canceled Orders</span>
-            <span class="info-box-number"></span>
+            <span class="info-box-number">{{$canceledorders}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -158,7 +158,7 @@ Deshboard
           <div class="card-body">
             <div class="row">
               <div class="col-md-12">
-               
+                {!! $chart->container() !!}
               </div>
               <!-- /.col -->
             </div>
@@ -181,4 +181,5 @@ Deshboard
 
 @endsection
 @section('links')
+{!! $chart->script() !!}
 @endsection

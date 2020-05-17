@@ -20,7 +20,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('/') }}back-end/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
 
   <style>
       @yield('style')
@@ -85,7 +85,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 |
+    <strong>Copyright &copy; 2020 By Nakshi Palli |
     All rights reserved.
   </footer>
 </div>

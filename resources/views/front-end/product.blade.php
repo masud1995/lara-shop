@@ -161,16 +161,16 @@
                                                 </div>
                                             @endif
                                                 <div class="col-sm-12 col-md-12  col-xs-12" style="padding: 0">
-                                                        <img style="width: 60px;padding: 10px" class="img-responsive pull-left mobile-icon" src="http://www.egbazar.com//front_asset/d.png" alt="Call azibto" title="Call azibto"><h3 class="font-size-title-mobile" style="font-weight: bold;font-size: 18px;text-align:left">   ঢাকায় ডেলিভারি খরচ: ৳ {{$basic->delivery_cost1}}</h3>
+                                                        <img style="width: 60px;padding: 10px" class="img-responsive pull-left mobile-icon" src="{{ asset('/') }}image/icon-prodducts/d.png" alt="Call azibto" title="Call azibto"><h3 class="font-size-title-mobile" style="font-weight: bold;font-size: 18px;text-align:left">   ঢাকায় ডেলিভারি খরচ: ৳ {{$basic->delivery_cost1}}</h3>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-xs-12" style="padding:0">
-                                                        <img style="width: 60px;padding: 10px" class="img-responsive pull-left  mobile-icon" src="http://www.egbazar.com//front_asset/od.png" alt="Call azibto" title="Call azibto"><h3 class="font-size-title-mobile" style="font-weight: bold;font-size: 18px;text-align:left">
+                                                        <img style="width: 60px;padding: 10px" class="img-responsive pull-left  mobile-icon" src="{{ asset('/') }}image/icon-prodducts/od.png" alt="Call azibto" title="Call azibto"><h3 class="font-size-title-mobile" style="font-weight: bold;font-size: 18px;text-align:left">
                                                             ঢাকার বাইরের ডেলিভারি খরচ: ৳ {{$basic->delivery_cost2}}
                                                         </h3>
                                                     </div>
                                                     @if($product->bkash)
                                                     <div class="col-sm-12 col-md-12 col-xs-12" style="padding:0">
-                                                        <img style="width: 60px;padding: 10px" class="img-responsive pull-left  mobile-icon" src="http://www.egbazar.com//front_asset/bk.png" alt="Call azibto" title="Azibto  "><h3 class="font-size-title-mobile" style="font-weight: bold;font-size: 18px;text-align:left">
+                                                        <img style="width: 60px;padding: 10px" class="img-responsive pull-left  mobile-icon" src="{{ asset('/') }}image/icon-prodducts/bk.png" alt="Call azibto" title="Azibto  "><h3 class="font-size-title-mobile" style="font-weight: bold;font-size: 18px;text-align:left">
                                                             বিকাশ মার্চেন্ট নাম্বার: {{$product->bkash}}
                                                         </h3>
                                                     </div>

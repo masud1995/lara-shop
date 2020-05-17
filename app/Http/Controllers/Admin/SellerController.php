@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\AdminMiddleware;
 use App\Seller;
 use App\Product;
 use DB;
 
 class SellerController extends Controller
 {
+
+
+    // public function __construct()
+    // {
+    //     $this->middleware([Authenticate::class, AdminMiddleware::class]);
+    // }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -28,8 +38,16 @@ class SellerController extends Controller
     //    ->get();
 
 
+
+    $data=Seller::leftjoin('products','products.id','=','sellers.id')
+    ->select('sellers.*','products.pcode')
+    ->orderBy('isActive','DESC')
+    ->get();
+
+
+
        if(request()->ajax()){
-        return datatables()->of(Seller::latest()->get())
+        return datatables()->of($data)
         ->addColumn('action',function($data){
           $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
           $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';

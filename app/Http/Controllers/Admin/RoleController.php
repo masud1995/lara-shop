@@ -13,17 +13,21 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     public function index()
     {
-        if (Auth::check() && Auth::user()->role->id == 1)
-    {
-       return redirect('/admin');
+        if (Auth::check() && Auth::user()->role->id == 1) {
+            return redirect('/admin');
+        } else {
 
-    } else {
-
-        return redirect('/vendor/dashboard');
-    }
-    
+            return redirect('/vendor/dashboard');
+        }
     }
 
     /**
@@ -33,7 +37,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+       // return view('back-end.vendor.seller.view');
     }
 
     /**
